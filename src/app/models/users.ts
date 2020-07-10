@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema({
   },
   imoveis: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'imoveis'
+    ref: 'imovel'
   }],
   passwordResetToken: {
     type: String,

@@ -4,41 +4,41 @@ import mongoose from '../../database/connection'
 const ImovelSchema = new mongoose.Schema({
   userId: {
     type: String,
-    required: true
+    ref: 'user'
   },
   preco: {
-    type: mongoose.Schema.Types.Decimal128,
+    type: Number,
     required: true
   },
   condominio: {
-    type: mongoose.Schema.Types.Decimal128,
+    type: Number,
     required: false
   },
   iptu: {
-    type: mongoose.Schema.Types.Decimal128,
+    type: Number,
     required: false
   },
   localizacao: {
-    rua: { type: String, required: true },
-    numero: { type: Number, required: true },
-    complemento: { type: String, required: true },
-    bairro: { type: String, required: true },
-    cep: { type: Number, required: true },
-    cidade: { type: String, required: true },
-    estado: { type: String, required: true },
+    rua: { type: String, required: false },
+    numero: { type: Number, required: false },
+    complemento: { type: String, required: false },
+    bairro: { type: String, required: false },
+    cep: { type: Number, required: false },
+    cidade: { type: String, required: false },
+    estado: { type: String, required: false },
     latitude: { type: String, required: false },
     longitude: { type: String, required: false }
   },
   caracteristicasApartamento: {
     tipo: { type: String, required: false },
     nome: { type: String, required: false },
-    andar: { type: Number, required: true },
-    metroQuadrado: { type: mongoose.Schema.Types.Decimal128, required: true },
-    mobiliado: { type: Boolean, required: true },
-    reformado: { type: Boolean, required: true },
-    vagas: { type: Number, required: true },
-    suites: { type: Number, required: true },
-    quartos: { type: Number, required: true },
+    andar: { type: Number, required: false },
+    metroQuadrado: { type: Number, required: false },
+    mobiliado: { type: Boolean, required: false },
+    reformado: { type: Boolean, required: false },
+    vagas: { type: Number, required: false },
+    suites: { type: Number, required: false },
+    quartos: { type: Number, required: false },
     detalhes: { type: String, required: false }
   },
   caracteristicasCondominio: {
@@ -56,18 +56,19 @@ const ImovelSchema = new mongoose.Schema({
   },
   descricaoTituloImovel: {
     type: String,
-    required: true
+    required: false
   },
   descricaoImovel: {
     type: String,
-    required: true
+    required: false
   },
   planta: {
     type: String,
     required: false
   },
   fotos: [{
-    type: mongoose.Schema.Types.ObjectId
+    type: mongoose.Schema.Types.ObjectId,
+    required: false
   }],
   createdAt: {
     type: Date,
@@ -76,10 +77,10 @@ const ImovelSchema = new mongoose.Schema({
 })
 
 interface IImovelSchema extends mongoose.Document {
-  userId: string,
-  preco: mongoose.Types.Decimal128,
-  condominio: mongoose.Types.Decimal128,
-  iptu: mongoose.Types.Decimal128,
+  userId: String,
+  preco: Number,
+  condominio: Number,
+  iptu: Number,
   localizacao: {
     rua: String,
     numero: Number,
@@ -95,7 +96,7 @@ interface IImovelSchema extends mongoose.Document {
     tipo: String,
     nome: String,
     andar: Number,
-    metroQuadrado: mongoose.Types.Decimal128,
+    metroQuadrado: Number,
     mobiliado: Boolean,
     reformado: Boolean,
     vagas: Number,
