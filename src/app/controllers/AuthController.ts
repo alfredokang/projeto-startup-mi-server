@@ -2,13 +2,13 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import crypto from 'crypto'
 import User from '../models/users'
-import authConfig from '../../config/auth.json'
+import 'dotenv/config'
 import mailer from '../../modules/mailer'
 
 class AuthController {
   // Gerando o token de segurança
   static generateToken (params = {}) {
-    return jwt.sign(params, authConfig.secret, {
+    return jwt.sign(params, process.env.SECRET, {
       expiresIn: 86400
     })
   }

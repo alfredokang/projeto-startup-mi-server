@@ -1,8 +1,11 @@
-// import path from 'path'
+import 'dotenv/config'
 import nodemailer from 'nodemailer'
-import { host, port, user, pass } from '../config/mail.json'
+// import path from 'path'
 // import hbs from 'nodemailer-express-handlebars'
-
+const host = process.env.MAILTRAP_HOST
+const port = process.env.MAILTRAP_PORT
+const user = process.env.MAILTRAP_USER
+const pass = process.env.MAILTRAP_PASS
 const transport = nodemailer.createTransport({
   host,
   port,

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import dbConfig from '../config/dbConfig.json'
+import 'dotenv/config'
 
-mongoose.connect(dbConfig.dbUri, {
+mongoose.connect(process.env.DB_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
