@@ -5,7 +5,7 @@ import User from '../models/users'
 import 'dotenv/config'
 import mailer from '../../modules/mailer'
 
-class AuthController {
+class UserController {
   // Gerando o token de segurança
   static generateToken (params = {}) {
     return jwt.sign(params, process.env.SECRET, {
@@ -126,4 +126,4 @@ class AuthController {
   }
 }
 
-export default AuthController
+export default UserController
